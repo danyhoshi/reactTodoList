@@ -16,7 +16,9 @@ interface Props { //aqui defino todos los tipos de las Props que necesito recibi
 export type TodoContextType = {
   tasks: Array<Task>,
   createTask: ( task: Task) => void,
-  deleteTask: (taskId: string) => void
+  deleteTask: (taskId: string) => void,
+  toggleFinish: (taskId: string, check: boolean) => void, 
+  updateTask: (text: string, taskId:string) => void
 }
 
 export const TaskContext = createContext<TodoContextType | null>(null);//retorna un objeto, es como el nombre del contexto
@@ -40,6 +42,39 @@ export const TaskContextProvider = ({ children }: Props) => { // este componente
     const deleteTask = (taskId: string) => {
       setTasks(prevTasks => prevTasks.filter(( t ) => { return (t.id != taskId) && t }))
     }
+    
+    const toggleFinish = (taskId: string, check: boolean) => {
+      setTasks(prevTasks => {  
+        const newArray = []
+          for (let ii = 0; ii < prevTasks.length; ii++) {
+          const oldTask = prevTasks[ii]
+              if (oldTask.id === taskId) {
+                // Put the most recently-modified note at the top
+                newArray.push({ ...oldTask, finish: check })
+             } else {
+                newArray.push(oldTask)
+            }
+        }
+        return newArray
+    })
+}
+
+const updateTask = (text: string, taskId:string) => {
+  setTasks(prevTasks => {  
+      const newArray = []
+        for (let ii = 0; ii < prevTasks.length; ii++) {
+        const oldTask = prevTasks[ii]
+            if (oldTask.id === taskId) {
+              // Put the most recently-modified note at the top
+              console.log(text)
+              newArray.push({ ...oldTask, title: text })
+           } else {
+              newArray.push(oldTask)
+          }
+      }
+      return newArray
+  })
+}    
   return (
     
     <>
@@ -47,7 +82,9 @@ export const TaskContextProvider = ({ children }: Props) => { // este componente
           {
             tasks,
             createTask,
-            deleteTask
+            deleteTask, 
+            toggleFinish, 
+            updateTask
           }
         }> {/* Este es el componente que es contenedor del resto de componentes, el que proveera de estados */}
              { children } {/* ASI CREO UN COMPONENTE QUE RECIBIRA OTROS COMPONENNTES HIJOS*/}
