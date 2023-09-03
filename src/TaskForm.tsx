@@ -17,7 +17,6 @@ function TaskForm() {
   
     function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
         const { name, value } = e.target;
-        console.log(dataForm.title)
         setDataForm(prevDataForm => {
             return {
                 ...prevDataForm,
@@ -40,7 +39,7 @@ function TaskForm() {
   return (
     <div className='max-w-md mx-auto'>
         <form onSubmit={ handleSubmit } className='bg-slate-800 p-10 mb-4'>
-            <h1 className='text-2xl font-bold text-white mb-3'>Crea tu tarea</h1>
+            <h1 className='text-2xl font-bold text-white mb-3'>Add your task</h1>
         <input className="bg-slate-300 p-3 w-full mb-2" type="text" name="title" placeholder='Escribe tu tarea aqui' 
                 onChange={  handleChange }
                 value = { dataForm.title }
@@ -49,7 +48,7 @@ function TaskForm() {
                  placeholder='Escibe la descripción de la tarea'
                  onChange={ handleChange }
                  value = { dataForm.description }></textarea> */}
-        <button className='bg-indigo-500 px-3 py-1 text-white hover:bg-indigo-400'>Añadir</button>
+        <button className='bg-indigo-500 px-3 py-1 text-white hover:bg-indigo-400'>Add</button>
     </form>
     </div>
     

@@ -18,7 +18,8 @@ export type TodoContextType = {
   createTask: ( task: Task) => void,
   deleteTask: (taskId: string) => void,
   toggleFinish: (taskId: string, check: boolean) => void, 
-  updateTask: (text: string, taskId:string) => void
+  updateTask: (text: string, taskId:string) => void,
+  deleteTasksCompleted: () => void
 }
 
 export const TaskContext = createContext<TodoContextType | null>(null);//retorna un objeto, es como el nombre del contexto
@@ -43,6 +44,10 @@ export const TaskContextProvider = ({ children }: Props) => { // este componente
       setTasks(prevTasks => prevTasks.filter(( t ) => { return (t.id != taskId) && t }))
     }
     
+    const deleteTasksCompleted = () => {
+      setTasks(prevTasks => prevTasks.filter(( t ) => { return (!t.finish) && t }))
+    }
+
     const toggleFinish = (taskId: string, check: boolean) => {
       setTasks(prevTasks => {  
         const newArray = []
@@ -84,7 +89,8 @@ const updateTask = (text: string, taskId:string) => {
             createTask,
             deleteTask, 
             toggleFinish, 
-            updateTask
+            updateTask,
+            deleteTasksCompleted
           }
         }> {/* Este es el componente que es contenedor del resto de componentes, el que proveera de estados */}
              { children } {/* ASI CREO UN COMPONENTE QUE RECIBIRA OTROS COMPONENNTES HIJOS*/}
