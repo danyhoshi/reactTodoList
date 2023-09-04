@@ -58,8 +58,7 @@ const TaskCard: React.FC<Props> = ( {task} ) => {
             icon = task.edit ? 
             <FcEmptyTrash className='col-start-6 col-end-6 align-middle ml-auto' size={30}
             onClick={() => deleteTask(task.id)}/> :
-            <CgMoreVerticalAlt className='col-start-6 col-end-6 align-middle ml-auto' size={30}
-                        onClick={() => deleteTask(task.id)}/>
+            <CgMoreVerticalAlt className='col-start-6 col-end-6 align-middle ml-auto' size={30} />
          }
         </div>
     

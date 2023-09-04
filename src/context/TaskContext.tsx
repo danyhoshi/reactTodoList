@@ -20,6 +20,7 @@ export type TodoContextType = {
   deleteTask: (taskId: string) => void,
   toggleFinish: (taskId: string, check: boolean) => void, 
   updateTask: (text: string, taskId:string) => void,
+  editIconTask: () => void,
   deleteTasksCompleted: () => void
 }
 
@@ -67,6 +68,17 @@ export const TaskContextProvider = ({ children }: Props) => { // este componente
     })
 }
 
+const editIconTask = () => {
+  setTasks(prevTasks => {  
+      const newArray = []
+        for (let ii = 0; ii < prevTasks.length; ii++) {
+          const oldTask = prevTasks[ii]
+          newArray.push({ ...oldTask, edit: false })
+      }
+      return newArray
+  })
+}
+
 const updateTask = (text: string, taskId:string) => {
   setTasks(prevTasks => {  
       const newArray = []
@@ -94,6 +106,7 @@ const updateTask = (text: string, taskId:string) => {
             deleteTask, 
             toggleFinish, 
             updateTask,
+            editIconTask,
             deleteTasksCompleted
           }
         }> {/* Este es el componente que es contenedor del resto de componentes, el que proveera de estados */}
@@ -102,4 +115,5 @@ const updateTask = (text: string, taskId:string) => {
     </>
   )
 }
+
 

@@ -13,7 +13,7 @@ function TaskForm() {
     }
     const [dataForm, setDataForm] = useState(INITIAL)   
      //const { createTask }  = useContext(TaskContext);
-     const { createTask } = useContext(TaskContext) as TodoContextType;
+     const { createTask, editIconTask } = useContext(TaskContext) as TodoContextType;
     //console.log(value)
   
     function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
@@ -27,17 +27,21 @@ function TaskForm() {
             }
 
         })
+        editIconTask();
     }
     
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        createTask(dataForm);
-        setDataForm({
-            id: "",
-            title: "",
-            finish: false, 
-            edit: false
-        })
+        if(dataForm.title){
+            createTask(dataForm);
+            setDataForm({
+                id: "",
+                title: "",
+                finish: false, 
+                edit: false
+            })
+        } 
+        editIconTask();
     }
   return (
     <div className='max-w-md mx-auto'>
