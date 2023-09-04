@@ -8,7 +8,8 @@ function TaskForm() {
     const INITIAL = {
         id: "",
         title: "",
-        finish: false
+        finish: false, 
+        edit: false
     }
     const [dataForm, setDataForm] = useState(INITIAL)   
      //const { createTask }  = useContext(TaskContext);
@@ -22,6 +23,7 @@ function TaskForm() {
                 ...prevDataForm,
                 id: nanoid(),
                 [name]: value,
+                edit: false
             }
 
         })
@@ -33,7 +35,8 @@ function TaskForm() {
         setDataForm({
             id: "",
             title: "",
-            finish: false
+            finish: false, 
+            edit: false
         })
     }
   return (

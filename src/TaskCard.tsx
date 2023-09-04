@@ -1,5 +1,6 @@
 import React from 'react'
 import { FcEmptyTrash } from "react-icons/fc";
+import { CgMoreVerticalAlt } from "react-icons/cg";
 import { TaskContext, Task, TodoContextType } from './context/TaskContext';
 import { useContext } from 'react';
 
@@ -11,7 +12,7 @@ const TaskCard: React.FC<Props> = ( {task} ) => {
    const { deleteTask, toggleFinish, updateTask } = useContext(TaskContext) as TodoContextType;
    const INITIAL = {
       title: task.title,
-      finish: task.finish
+      finish: task.finish, 
   }
   const [dataForm, setDataForm] = React.useState(INITIAL)   
 
@@ -22,13 +23,17 @@ const TaskCard: React.FC<Props> = ( {task} ) => {
             ...prevDataForm,
             [name]: type === "checkbox" ? checked : value
          }})
-         if(type === "checkbox")
+         if(type === "checkbox"){
             toggleFinish(taskId, checked);
-         else
+         }
+         else {
+
             updateTask(value, taskId)
+         }
    }       
 
     let input: JSX.Element
+    let icon: JSX.Element
     return (
   
         <div className='bg-gray-800 text-white p-4 rounded-md max-w-md mx-auto grid grid-cols-6'>
@@ -49,9 +54,13 @@ const TaskCard: React.FC<Props> = ( {task} ) => {
                         value={ task.title } 
                         className='outline-none min-h-full mx-1 w-11/12 rounded-md px-1 text-ml bg-gray-800 font-bold capitalize' /> }
          </div>
-         
-          <FcEmptyTrash className='col-start-6 col-end-6 align-middle ml-auto' size={30}
+         {
+            icon = task.edit ? 
+            <FcEmptyTrash className='col-start-6 col-end-6 align-middle ml-auto' size={30}
+            onClick={() => deleteTask(task.id)}/> :
+            <CgMoreVerticalAlt className='col-start-6 col-end-6 align-middle ml-auto' size={30}
                         onClick={() => deleteTask(task.id)}/>
+         }
         </div>
     
    )

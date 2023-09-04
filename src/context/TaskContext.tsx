@@ -1,12 +1,13 @@
 import React from 'react'
 import { createContext} from "react"
 import { useState, useEffect } from 'react';
-import {tasks as data}  from '../tasks.ts' //rfce es el comando para las importanciones
+ //rfce es el comando para las importanciones
 
 export interface Task {
   id: string,
   title: string,
-  finish: boolean
+  finish: boolean,
+  edit: boolean
 }
 
 interface Props { //aqui defino todos los tipos de las Props que necesito recibir
@@ -26,15 +27,17 @@ export const TaskContext = createContext<TodoContextType | null>(null);//retorna
 export const TaskContextProvider = ({ children }: Props) => { // este componente proveerá del estado de padre a los componentes hijos
 
     //let value = 20;
-    const [tasks, setTasks] = useState<Array<Task>>([]) //usestate snippet, escribe el nombre y tab
+    const [tasks, setTasks] = useState<Array<Task> | [] >(() => JSON.parse(localStorage.getItem("tasks") || '') || []) //usestate snippet, escribe el nombre y tab
+   useEffect(() => {
+      localStorage.setItem("tasks", JSON.stringify(tasks))
+    //  setTasks(prevTasks => JSON.stringify(localStorage.getItem(tasks)))
   
-    useEffect(() => {
-      setTasks(data)
+       // return () => {
+         
+       // }
+}, [tasks])
+   
     
-      // return () => {
-        
-      // }
-    }, [])
     
     const createTask = (task: Task) => {
       setTasks(prevTasks => [...prevTasks, task])
@@ -72,11 +75,12 @@ const updateTask = (text: string, taskId:string) => {
             if (oldTask.id === taskId) {
               // Put the most recently-modified note at the top
               console.log(text)
-              newArray.push({ ...oldTask, title: text })
+              newArray.push({ ...oldTask, title: text, edit: true })
            } else {
-              newArray.push(oldTask)
+              newArray.push({ ...oldTask, edit: false })
           }
       }
+
       return newArray
   })
 }    
