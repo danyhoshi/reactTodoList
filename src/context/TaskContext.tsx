@@ -28,7 +28,8 @@ export const TaskContext = createContext<TodoContextType | null>(null);//retorna
 export const TaskContextProvider = ({ children }: Props) => { // este componente proveerá del estado de padre a los componentes hijos
 
     //let value = 20;
-    const [tasks, setTasks] = useState<Array<Task> | [] >(() => JSON.parse(localStorage.getItem("tasks") || '') || []) //usestate snippet, escribe el nombre y tab
+    //Si el parse no consigue la key le digo que puedo tener un arreglo vacio como string "[]"
+    const [tasks, setTasks] = useState<Array<Task> | [] >(() => JSON.parse(localStorage.getItem("tasks") || '[]') || []) //usestate snippet, escribe el nombre y tab
    useEffect(() => {
       localStorage.setItem("tasks", JSON.stringify(tasks))
     //  setTasks(prevTasks => JSON.stringify(localStorage.getItem(tasks)))

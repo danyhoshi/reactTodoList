@@ -7,7 +7,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest --watchAll=true --coverage --CI=true"
+    "test": "jest --watchAll=false --coverage --CI=true"
   },
   "dependencies": {
     "@babel/preset-env": "^7.22.14",
@@ -22,11 +22,14 @@
     "jest-svg-transformer": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.10.1"
+    "react-icons": "^4.10.1",
+    "ulid": "^2.3.0",
+    "xid-js": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.22.11",
     "@babel/preset-typescript": "^7.22.11",
+    "@testing-library/jest-dom": "^6.1.2",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",

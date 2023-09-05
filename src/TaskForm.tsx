@@ -1,9 +1,12 @@
 import React from 'react'
 import { useState, useContext } from "react"
-import { nanoid } from "nanoid"
+import { ulid } from 'ulid'
+//import { nanoid } from "nanoid"
+
 import { TaskContext, TodoContextType } from './context/TaskContext'; 
 
 function TaskForm() {
+   // const xid = require('xid-js');
     // const { createTask } = props
     const INITIAL = {
         id: "",
@@ -21,7 +24,7 @@ function TaskForm() {
         setDataForm(prevDataForm => {
             return {
                 ...prevDataForm,
-                id: nanoid(),
+                id: ulid(), 
                 [name]: value,
                 edit: false
             }
@@ -47,7 +50,7 @@ function TaskForm() {
     <div className='max-w-md mx-auto'>
         <form onSubmit={ handleSubmit } className='bg-slate-800 p-10 mb-4'>
             <h1 className='text-2xl font-bold text-white mb-3'>Add your task</h1>
-        <input className="bg-slate-300 p-3 w-full mb-2" type="text" name="title" placeholder='Escribe tu tarea aqui' 
+        <input className="bg-slate-300 p-3 w-full mb-2" type="text" name="title" placeholder='Type your task here' 
                 onChange={  handleChange }
                 value = { dataForm.title }
                 autoFocus/>
