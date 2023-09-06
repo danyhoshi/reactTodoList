@@ -47,12 +47,12 @@ const TaskCard: React.FC<Props> = ( {task} ) => {
                 <input type="text" 
                         name="title"  
                         value={ task.title}
-                        className='outline-none min-h-full mx-1 w-11/12 rounded-md px-1 text-ml bg-gray-800 font-bold capitalize line-through'/> :
+                        className='outline-none min-h-full mx-1 w-11/12 rounded-md px-1 text-ml bg-gray-800 font-bold line-through'/> :
                <input type="text" 
                         name="title"
                         onChange={ (e) => handleChange(e, task.id) }
                         value={ task.title } 
-                        className='outline-none min-h-full mx-1 w-11/12 rounded-md px-1 text-ml bg-gray-800 font-bold capitalize' /> }
+                        className='outline-none min-h-full mx-1 w-11/12 rounded-md px-1 text-ml bg-gray-800 font-bold' /> }
          </div>
          {
             icon = task.edit ? 
