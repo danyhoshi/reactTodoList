@@ -32,8 +32,6 @@ const TaskCard: React.FC<Props> = ( {task} ) => {
          }
    }       
 
-    let input: JSX.Element
-    let icon: JSX.Element
     return (
   
         <div data-testid="task-container" className='bg-gray-800 text-white p-4 rounded-md max-w-md mx-auto grid grid-cols-6'>
@@ -43,7 +41,7 @@ const TaskCard: React.FC<Props> = ( {task} ) => {
                 name="finish" 
                 onChange={ (e) => handleChange(e, task.id) } 
                 className="text-blue-600 bg-gray-500 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                { input = dataForm.finish ? 
+                { dataForm.finish ? 
                 <input type="text" 
                         name="title"  
                         value={ task.title}
@@ -55,7 +53,7 @@ const TaskCard: React.FC<Props> = ( {task} ) => {
                         className='outline-none min-h-full mx-1 w-11/12 rounded-md px-1 text-ml bg-gray-800 font-bold' /> }
          </div>
          {
-            icon = task.edit ? 
+            task.edit ? 
             <FcEmptyTrash data-testid="trashIcon" className='col-start-6 col-end-6 align-middle ml-auto' size={30}
             onClick={() => deleteTask(task.id)}/> :
             <CgMoreVerticalAlt data-testid="editIcon"  className='col-start-6 col-end-6 align-middle ml-auto' size={30} />
