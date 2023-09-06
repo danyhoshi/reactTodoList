@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import {prettyDOM} from '@testing-library/dom'
 //import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom';
@@ -42,11 +42,7 @@ describe("TaskList, TaskForm and ButtonClear", ()=> {
     const deleteTasks = () => {
         const checks = screen.getAllByRole("checkbox");
         const buttonDelete = screen.getByRole("button", { name: /Clear all completed/i});
-        checks.forEach(element => {
-            console.log('aqui')
-            //fireEvent.change(inputAdd, { target: { value: element.title } });
-            fireEvent.click(element);
-        });
+        checks.forEach(element => { fireEvent.click(element); });
         fireEvent.click(buttonDelete);
     }
 
@@ -107,4 +103,11 @@ describe("TaskList, TaskForm and ButtonClear", ()=> {
         //  console.log(prettyDOM(divElements[1]))
           expect(divElements.length).toBe(0);
      });
+
+     test('task without title is not add', async () => {
+      addTask([{id: "4", title: "", finish: false, edit: false}])
+        const divElements = screen.queryAllByTestId("task-container");
+      //  console.log(prettyDOM(divElements[1]))
+        expect(divElements.length).toBe(0);
+   });
 })
