@@ -36,7 +36,7 @@ const TaskCard: React.FC<Props> = ( {task} ) => {
     let icon: JSX.Element
     return (
   
-        <div className='bg-gray-800 text-white p-4 rounded-md max-w-md mx-auto grid grid-cols-6'>
+        <div data-testid="task-container" className='bg-gray-800 text-white p-4 rounded-md max-w-md mx-auto grid grid-cols-6'>
          <div className='col-span-5'>
                <input type="checkbox" 
                checked = { dataForm.finish }
@@ -56,9 +56,9 @@ const TaskCard: React.FC<Props> = ( {task} ) => {
          </div>
          {
             icon = task.edit ? 
-            <FcEmptyTrash className='col-start-6 col-end-6 align-middle ml-auto' size={30}
+            <FcEmptyTrash data-testid="trashIcon" className='col-start-6 col-end-6 align-middle ml-auto' size={30}
             onClick={() => deleteTask(task.id)}/> :
-            <CgMoreVerticalAlt className='col-start-6 col-end-6 align-middle ml-auto' size={30} />
+            <CgMoreVerticalAlt data-testid="editIcon"  className='col-start-6 col-end-6 align-middle ml-auto' size={30} />
          }
         </div>
     
