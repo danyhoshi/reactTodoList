@@ -41,7 +41,7 @@ export const TaskContextProvider = ({ children }: Props) => { // este componente
    
     
     
-    const createTask = (task: Task) => {
+   const createTask = (task: Task) => {
       setTasks(prevTasks => [...prevTasks, task])
     }
 

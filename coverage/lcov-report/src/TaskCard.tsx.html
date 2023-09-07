@@ -129,9 +129,7 @@
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,23 +139,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">51x</span>
-<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-yes">72x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">72x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,16 +163,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">72x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -233,8 +229,6 @@ const TaskCard: React.FC&lt;Props&gt; = ( {task} ) =&gt; {
          }
    }       
 &nbsp;
-    let input: JSX.Element
-    let icon: JSX.Element
     return (
   
         &lt;div data-testid="task-container" className='bg-gray-800 text-white p-4 rounded-md max-w-md mx-auto grid grid-cols-6'&gt;
@@ -244,19 +238,19 @@ const TaskCard: React.FC&lt;Props&gt; = ( {task} ) =&gt; {
                 name="finish" 
                 onChange={ (e) =&gt; handleChange(e, task.id) } 
                 className="text-blue-600 bg-gray-500 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/&gt;
-                { input = dataForm.finish ? 
+                { dataForm.finish ? 
                 &lt;input type="text" 
                         name="title"  
                         value={ task.title}
-                        className='outline-none min-h-full mx-1 w-11/12 rounded-md px-1 text-ml bg-gray-800 font-bold capitalize line-through'/&gt; :
+                        className='outline-none min-h-full mx-1 w-11/12 rounded-md px-1 text-ml bg-gray-800 font-bold line-through'/&gt; :
                &lt;input type="text" 
                         name="title"
                         onChange={ (e) =&gt; handleChange(e, task.id) }
                         value={ task.title } 
-                        className='outline-none min-h-full mx-1 w-11/12 rounded-md px-1 text-ml bg-gray-800 font-bold capitalize' /&gt; }
+                        className='outline-none min-h-full mx-1 w-11/12 rounded-md px-1 text-ml bg-gray-800 font-bold' /&gt; }
          &lt;/div&gt;
          {
-            icon = task.edit ? 
+            task.edit ? 
             &lt;FcEmptyTrash data-testid="trashIcon" className='col-start-6 col-end-6 align-middle ml-auto' size={30}
             onClick={() =&gt; deleteTask(task.id)}/&gt; :
             &lt;CgMoreVerticalAlt data-testid="editIcon"  className='col-start-6 col-end-6 align-middle ml-auto' size={30} /&gt;
@@ -274,7 +268,7 @@ export default TaskCard</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-06T22:34:27.001Z
+                at 2023-09-07T22:15:11.854Z
             </div>
         <script src="../prettify.js"></script>
         <script>
