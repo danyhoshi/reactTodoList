@@ -14,7 +14,7 @@ task = {
     finish: false,
     edit: false
 }
-describe("TaskForm", ()=> {
+describe("TaskCard", ()=> {
   beforeEach(() => {
     render( 
       <TaskContextProvider>
@@ -38,7 +38,7 @@ describe("TaskForm", ()=> {
     const editIcon = screen.getByTestId('editIcon');
     expect(editIcon).toBeInTheDocument();
   });
-  
+
   test('Renders text with line through', async () => {
     const inputTask = await screen.findByRole('textbox');
     const inputCheck = await screen.findByRole('checkbox');

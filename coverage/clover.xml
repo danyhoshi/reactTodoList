@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1694124912021" clover="3.2.0">
-  <project timestamp="1694124912022" name="All files">
+<coverage generated="1694140790666" clover="3.2.0">
+  <project timestamp="1694140790666" name="All files">
     <metrics statements="72" coveredstatements="72" conditionals="24" coveredconditionals="22" methods="31" coveredmethods="31" elements="127" coveredelements="125" complexity="0" loc="72" ncloc="72" packages="2" files="6" classes="6"/>
     <package name="src">
       <metrics statements="34" coveredstatements="34" conditionals="12" coveredconditionals="12" methods="14" coveredmethods="14"/>
@@ -28,8 +28,8 @@
         <line num="31" count="2" type="stmt"/>
         <line num="35" count="72" type="stmt"/>
         <line num="42" count="7" type="stmt"/>
-        <line num="51" count="2" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
       </file>
       <file name="TaskForm.tsx" path="C:\Users\crist\OneDrive\Desktop\Carpeta\Dream\React\TypeScript\reactTodoList\src\TaskForm.tsx">
         <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>

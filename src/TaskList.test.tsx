@@ -62,18 +62,18 @@ describe("TaskList, TaskForm and ButtonClear", ()=> {
 
     test('should render the amount things (3)', async () => {
         addTask(tasks);
-        const divElements = screen.getAllByTestId("task-container");
+        const inputs = screen.getAllByRole("textbox", {name: "task"});
+       // const divElements = screen.getAllByTestId("task-container");
         //console.log(prettyDOM(divElements[1]))
-        expect(divElements.length).toBe(3);
+        expect(inputs.length).toBe(3);
      });
 
      test('should render a changed task', async () => {
         addTask([{id: "3", title: "New task", finish: false, edit: false}]);
         let inputTask = screen.getByDisplayValue("New task");
-       // console.log(prettyDOM(divElements[1]))
         fireEvent.change(inputTask, {
                 target: {
-               value: "Good day",
+                value: "Good day",
              },
            });
            console.log(prettyDOM(inputTask))
@@ -92,22 +92,20 @@ describe("TaskList, TaskForm and ButtonClear", ()=> {
           // console.log(prettyDOM(inputTask))
           const trashIcon = screen.getByTestId('trashIcon');
           fireEvent.click(trashIcon)
-          const divElements = screen.getAllByTestId("task-container");
+          const divElements = screen.getAllByRole("textbox", {name: "task"});
         //  console.log(prettyDOM(divElements[1]))
           expect(divElements.length).toBe(3);
      });
 
      test('should delete 3 tasks', async () => {
         deleteTasks()
-          const divElements = screen.queryAllByTestId("task-container");
-        //  console.log(prettyDOM(divElements[1]))
-          expect(divElements.length).toBe(0);
+        const divElements = screen.queryAllByRole("textbox", {name: "task"});
+        expect(divElements.length).toBe(0);
      });
 
      test('task without title is not add', async () => {
       addTask([{id: "4", title: "", finish: false, edit: false}])
-        const divElements = screen.queryAllByTestId("task-container");
-      //  console.log(prettyDOM(divElements[1]))
+        const divElements = screen.queryAllByRole("textbox", {name: "task"});
         expect(divElements.length).toBe(0);
    });
 })

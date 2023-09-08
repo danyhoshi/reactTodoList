@@ -32,8 +32,8 @@ FN:11,(anonymous_0)
 FN:19,handleChange
 FN:21,(anonymous_2)
 FN:42,(anonymous_3)
-FN:51,(anonymous_4)
-FN:58,(anonymous_5)
+FN:53,(anonymous_4)
+FN:60,(anonymous_5)
 FNF:6
 FNH:6
 FNDA:72,(anonymous_0)
@@ -54,8 +54,8 @@ DA:27,7
 DA:31,2
 DA:35,72
 DA:42,7
-DA:51,2
-DA:58,1
+DA:53,2
+DA:60,1
 LF:14
 LH:14
 BRDA:24,0,0,7
@@ -64,8 +64,8 @@ BRDA:26,1,0,7
 BRDA:26,1,1,2
 BRDA:44,2,0,13
 BRDA:44,2,1,59
-BRDA:56,3,0,3
-BRDA:56,3,1,69
+BRDA:58,3,0,3
+BRDA:58,3,1,69
 BRF:8
 BRH:8
 end_of_record

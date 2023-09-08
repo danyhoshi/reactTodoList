@@ -53,23 +53,20 @@ describe("App", ()=> {
       )
     })
 
-    test('should save in localstorage', async () => {
+    test('should save 3 task in localstorage', async () => {
       window.localStorage.clear();
-        addTask(tasks);
-       // const divElements = screen.getAllByTestId("task-container");
-        //console.log(prettyDOM(divElements[1]))
-       // expect(divElements.length).toBe(3);
-
-       let exist = localStorage.getItem('tasks') ? true : false
-       console.log(localStorage.getItem('tasks'))
-       expect(exist).toBe(true);
+      addTask(tasks);
+      //  let exist = localStorage.getItem('tasks') ? true : false
+      //  console.log(localStorage.getItem('tasks'))
+      //  JSON.parse(localStorage.getItem('tasks') || '[]')
+      // expect(exist).toBe(true);
+      expect(JSON.parse(localStorage.getItem('tasks') || '[]').length).toBe(3);
      });
 
-     test('should delete 3 tasks', async () => {
+     test('should delete 3 tasks from localstorage', async () => {
         deleteTasks()
-          const divElements = screen.queryAllByTestId("task-container");
           console.log(localStorage.getItem('tasks'))
         //  console.log(prettyDOM(divElements[1]))
-          expect(divElements.length).toBe(0);
+          expect(localStorage.getItem('tasks')).toBe("[]");
      });
     });

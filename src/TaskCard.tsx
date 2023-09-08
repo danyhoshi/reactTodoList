@@ -34,7 +34,7 @@ const TaskCard: React.FC<Props> = ( {task} ) => {
 
     return (
   
-        <div data-testid="task-container" className='bg-gray-800 text-white p-4 rounded-md max-w-md mx-auto grid grid-cols-6'>
+        <div className='bg-gray-800 text-white p-4 rounded-md max-w-md mx-auto grid grid-cols-6'>
          <div className='col-span-5'>
                <input type="checkbox" 
                checked = { dataForm.finish }
@@ -43,10 +43,12 @@ const TaskCard: React.FC<Props> = ( {task} ) => {
                 className="text-blue-600 bg-gray-500 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                 { dataForm.finish ? 
                 <input type="text" 
+                        title="task"
                         name="title"  
                         value={ task.title}
                         className='outline-none min-h-full mx-1 w-11/12 rounded-md px-1 text-ml bg-gray-800 font-bold line-through'/> :
                <input type="text" 
+                        title="task"
                         name="title"
                         onChange={ (e) => handleChange(e, task.id) }
                         value={ task.title } 
